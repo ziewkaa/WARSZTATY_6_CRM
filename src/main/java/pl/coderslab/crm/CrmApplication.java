@@ -1,4 +1,4 @@
-package pl.coderslab.cmr;
+package pl.coderslab.crm;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
