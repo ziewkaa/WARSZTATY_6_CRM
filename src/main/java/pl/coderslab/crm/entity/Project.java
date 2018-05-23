@@ -1,13 +1,15 @@
-package pl.coderslab.cmr.entity;
+package pl.coderslab.crm.entity;
 
 import org.hibernate.validator.constraints.URL;
 
 import javax.persistence.*;
-import java.time.LocalDate;
+import javax.validation.constraints.NotEmpty;
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.regex.Matcher;
 
 @Entity
+@Table(name = "projects")
 public class Project {
 
     @Id
@@ -16,6 +18,7 @@ public class Project {
 
     private LocalDateTime created;
 
+    @NotEmpty(message = "* Please provide a name for your project")
     private String name;
 
     private String description;
@@ -25,12 +28,12 @@ public class Project {
 
     private String identifier;
 
-    @ManyToMany(mappedBy = "project", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "project")
     private List<User> users;
 
-    private boolean activity = false;
+    private Boolean activity = false;
 
-    @OneToMany(mappedBy = "project", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "project")
     private List<Quest> quests;
 
     public Project() {
@@ -81,7 +84,8 @@ public class Project {
     }
 
     public void setIdentifier(String identifier) {
-        this.identifier = identifier;
+        String changed = identifier.replaceAll("[ąĄęĘłŁŚśżŻćĆźŹńŃ]","").replaceAll("[\\s]", "-");
+        this.identifier = changed;
     }
 
     public List<User> getUsers() {

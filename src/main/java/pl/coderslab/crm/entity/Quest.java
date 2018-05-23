@@ -1,11 +1,12 @@
-package pl.coderslab.cmr.entity;
+package pl.coderslab.crm.entity;
 
 import javax.persistence.*;
-import java.time.LocalDate;
+import javax.validation.constraints.NotEmpty;
 import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
+@Table(name = "quests")
 public class Quest {
 
     @Id
@@ -14,6 +15,7 @@ public class Quest {
 
     private LocalDateTime created;
 
+    @NotEmpty(message = "* Please provide a title for the Task")
     private String title;
 
     @ManyToOne
@@ -27,7 +29,7 @@ public class Quest {
     @ManyToOne
     private Priority priority;
 
-    @ManyToOne
+    @ManyToMany(fetch = FetchType.EAGER)
     private List<User> users;
 
     public Quest() {

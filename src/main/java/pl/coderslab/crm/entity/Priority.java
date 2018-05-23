@@ -1,11 +1,9 @@
-package pl.coderslab.cmr.entity;
+package pl.coderslab.crm.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
+@Table(name = "priorities")
 public class Priority {
 
     @Id
@@ -14,7 +12,7 @@ public class Priority {
 
     private String name;
 
-    private boolean activity = false;
+    private Boolean activity = false;
 
     public Priority() {
     }

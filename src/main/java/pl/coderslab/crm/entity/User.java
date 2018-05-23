@@ -1,32 +1,42 @@
-package pl.coderslab.cmr.entity;
+package pl.coderslab.crm.entity;
+
+import org.hibernate.validator.constraints.UniqueElements;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import java.util.List;
+import java.util.Set;
 
 @Entity
+@Table(name = "users")
 public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @NotEmpty
-    @Column(unique = true)
-    private String userName;
+    @NotEmpty(message = "* Please choose a username")
+    @UniqueElements(message = "* Please choose different username")
+    private String username;
 
-    private String firstName;
+    private String firstname;
 
-    private String lastName;
+    private String lastname;
 
-    @NotEmpty
+    @NotEmpty(message = "* Please choose a password")
     private String password;
 
     @ManyToOne
     private Project project;
 
-    @ManyToMany(mappedBy = "users")
+    @ManyToMany(mappedBy = "users", fetch = FetchType.EAGER)
     private List<Quest> quests;
+
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private Set<Role> roles;
+
+    @OneToOne
+    private Activity activity;
 
     public User() {
     }
@@ -39,29 +49,38 @@ public class User {
         this.id = id;
     }
 
-    public String getUserName() {
-        return userName;
+    public String getUsername() {
+        return username;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
-    public String getFirstName() {
-        return firstName;
+    public String getFirstname() {
+        return firstname;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
     }
 
-    public String getLastName() {
-        return lastName;
+    public String getLastname() {
+        return lastname;
     }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
     }
+
+    public Set<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Set<Role> roles) {
+        this.roles = roles;
+    }
+
 
     public String getPassword() {
         return password;
@@ -86,4 +105,5 @@ public class User {
     public void setQuests(List<Quest> quests) {
         this.quests = quests;
     }
+
 }
