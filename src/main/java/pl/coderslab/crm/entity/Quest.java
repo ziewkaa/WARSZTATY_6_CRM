@@ -23,11 +23,11 @@ public class Quest {
 
     private String description;
 
-    @ManyToOne
-    private Status status;
+    @OneToMany
+    private List<Status> statuses;
 
-    @ManyToOne
-    private Priority priority;
+    @OneToMany
+    private List<Priority> priorities;
 
     @ManyToMany(fetch = FetchType.EAGER)
     private List<User> users;
@@ -75,27 +75,27 @@ public class Quest {
         this.description = description;
     }
 
-    public Status getStatus() {
-        return status;
-    }
-
-    public void setStatus(Status status) {
-        this.status = status;
-    }
-
-    public Priority getPriority() {
-        return priority;
-    }
-
-    public void setPriority(Priority priority) {
-        this.priority = priority;
-    }
-
     public List<User> getUsers() {
         return users;
     }
 
     public void setUsers(List<User> users) {
         this.users = users;
+    }
+
+    public List<Status> getStatuses() {
+        return statuses;
+    }
+
+    public void setStatuses(List<Status> statuses) {
+        this.statuses = statuses;
+    }
+
+    public List<Priority> getPriorities() {
+        return priorities;
+    }
+
+    public void setPriorities(List<Priority> priorities) {
+        this.priorities = priorities;
     }
 }

@@ -1,4 +1,7 @@
 package pl.coderslab.crm.repository;
 
-public interface PriorityRepository {
+import org.springframework.data.jpa.repository.JpaRepository;
+import pl.coderslab.crm.entity.Priority;
+
+public interface PriorityRepository extends JpaRepository<Priority, Long> {
 }

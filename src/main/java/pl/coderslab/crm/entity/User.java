@@ -81,7 +81,6 @@ public class User {
         this.roles = roles;
     }
 
-
     public String getPassword() {
         return password;
     }
@@ -106,4 +105,11 @@ public class User {
         this.quests = quests;
     }
 
+    public Activity getActivity() {
+        return activity;
+    }
+
+    public void setActivity(Activity activity) {
+        this.activity = activity;
+    }
 }

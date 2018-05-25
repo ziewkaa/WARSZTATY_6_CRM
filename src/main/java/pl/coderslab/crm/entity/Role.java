@@ -13,7 +13,7 @@ public class Role {
     private int id;
 
     @Column(name = "role")
-    @NotEmpty(message = "* Please provide a name of the Role")
+    @NotEmpty(message = "* Please provide a name for the Role")
     private String name;
 
     public Role(){};

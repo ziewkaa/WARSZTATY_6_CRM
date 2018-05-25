@@ -12,6 +12,9 @@ public interface ProjectRepository extends JpaRepository<Project, Long> {
     @Query("SELECT p FROM Project p ORDER BY p.created DESC")
     List<Project> findAllByOrderByCreatedDesc();
 
+    @Query("SELECT p FROM Project p ORDER BY p.created DESC")
+    List<Project> findTop5ByOrderByCreatedDesc();
+
     @Query("SELECT p FROM Project p WHERE p.id = :id")
     Project findOneById(@Param("id") Long id);
 

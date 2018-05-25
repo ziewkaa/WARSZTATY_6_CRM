@@ -10,6 +10,8 @@ public interface ProjectService {
 
     List<Project> findAllProjectsOrderByCreatedDesc();
 
+    List<Project> findTop5ProjectsOrderByCreatedDesc();
+
     void saveProject(Project project);
 
 }

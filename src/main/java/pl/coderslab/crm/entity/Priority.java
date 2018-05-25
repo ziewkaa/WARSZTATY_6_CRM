@@ -14,6 +14,9 @@ public class Priority {
 
     private Boolean activity = false;
 
+    @ManyToOne
+    private Quest quest;
+
     public Priority() {
     }
 
@@ -39,5 +42,21 @@ public class Priority {
 
     public void setActivity(boolean activity) {
         this.activity = activity;
+    }
+
+    public Boolean getActivity() {
+        return activity;
+    }
+
+    public void setActivity(Boolean activity) {
+        this.activity = activity;
+    }
+
+    public Quest getQuest() {
+        return quest;
+    }
+
+    public void setQuest(Quest quest) {
+        this.quest = quest;
     }
 }

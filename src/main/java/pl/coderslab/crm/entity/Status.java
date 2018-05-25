@@ -14,6 +14,9 @@ public class Status {
 
     private int sortindex;
 
+    @ManyToOne
+    private Quest quest;
+
     public Status() {
     }
 

@@ -1,4 +1,7 @@
 package pl.coderslab.crm.repository;
 
-public interface StatusRepository {
+import org.springframework.data.jpa.repository.JpaRepository;
+import pl.coderslab.crm.entity.Status;
+
+public interface StatusRepository extends JpaRepository<Status, Long> {
 }

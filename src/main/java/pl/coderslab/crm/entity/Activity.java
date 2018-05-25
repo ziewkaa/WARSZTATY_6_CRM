@@ -16,6 +16,12 @@ public class Activity {
     @OneToOne
     private User user;
 
+    @OneToOne
+    private Project project;
+
+    @OneToOne
+    private Quest quest;
+
     public Activity() {
     }
 
@@ -33,5 +39,30 @@ public class Activity {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+
+    public LocalDateTime getCreated() {
+        return created;
+    }
+
+    public void setCreated(LocalDateTime created) {
+        this.created = created;
+    }
+
+    public Project getProject() {
+        return project;
+    }
+
+    public void setProject(Project project) {
+        this.project = project;
+    }
+
+    public Quest getQuest() {
+        return quest;
+    }
+
+    public void setQuest(Quest quest) {
+        this.quest = quest;
     }
 }

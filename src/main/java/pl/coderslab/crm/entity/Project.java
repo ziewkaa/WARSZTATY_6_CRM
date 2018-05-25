@@ -31,10 +31,13 @@ public class Project {
     @OneToMany(mappedBy = "project")
     private List<User> users;
 
-    private Boolean activity = false;
+    private Boolean active = false;
 
     @OneToMany(mappedBy = "project")
     private List<Quest> quests;
+
+    @OneToMany(mappedBy = "project")
+    private List<Activity> activities;
 
     public Project() {
     }
@@ -96,12 +99,12 @@ public class Project {
         this.users = users;
     }
 
-    public boolean isActivity() {
-        return activity;
+    public Boolean getActive() {
+        return active;
     }
 
-    public void setActivity(boolean activity) {
-        this.activity = activity;
+    public void setActive(Boolean active) {
+        this.active = active;
     }
 
     public List<Quest> getQuests() {
@@ -110,5 +113,13 @@ public class Project {
 
     public void setQuests(List<Quest> quests) {
         this.quests = quests;
+    }
+
+    public List<Activity> getActivities() {
+        return activities;
+    }
+
+    public void setActivities(List<Activity> activities) {
+        this.activities = activities;
     }
 }
