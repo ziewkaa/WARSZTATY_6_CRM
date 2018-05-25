@@ -1,10 +1,27 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head>
-    <title>Hello </title>
+    <title>Home </title>
     <meta charset="utf-8" />
-</head>
-<body>
-<p>Hello</p>
-</body>
+    </head>
+    <body>
+    <header th:include="fragments/header :: pageheader"></header>
+
+        <div>
+            <p>Recent Projects:</p>
+            <span th:each="project : ${projects}"  >
+                <p th:text="project.name"/>
+                <p th:text="project.users.username"/>
+            </span>
+        </div>
+
+        <div>
+            <p>Recent Activities:</p>
+            <span th:each="activity : ${activities}">
+                <p th:text="activity.user.username"/>
+            </span>
+        </div>
+
+        <footer th:include="fragments/footer :: pagefooter"></footer>
+    </body>
 </html>
